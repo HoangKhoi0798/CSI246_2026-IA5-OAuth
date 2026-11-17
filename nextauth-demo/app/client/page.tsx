@@ -2,19 +2,28 @@
 import { useSession } from "next-auth/react";
 
 export default function ClientPage() {
-  const { data: session, status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      window.location.href = "/"; // Redirect if not logged in
-    },
-  });
+  const { data: session, status } = useSession();
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <p className="p-8">Loading...</p>;
+
+  if (!session) {
+    return (
+      <div className="p-8">
+        <h1 className="text-2xl font-bold">Protected Client Page</h1>
+        <p className="text-red-500 mt-2">
+          You must be logged in to view this page. Please sign in using the
+          Navbar above.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div>
+    <div className="p-8">
       <h1 className="text-2xl font-bold">Protected Client Page</h1>
-      <p>Welcome, {session?.user?.email}!</p>
+      <p className="mt-2">
+        Welcome to the client side, <strong>{session?.user?.email}</strong>!
+      </p>
     </div>
   );
 }

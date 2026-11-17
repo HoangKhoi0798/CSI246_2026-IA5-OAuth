@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Suspense } from "react";
+import { Providers } from "./components/providers";
 
 export const metadata: Metadata = {
   title: "NextAuth Demo",
@@ -25,8 +16,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main className="p-8">{children}</main>
+        <Providers>
+          <Suspense
+            fallback={
+              <div className="p-4 bg-gray-900 text-white">
+                Loading navbar...
+              </div>
+            }
+          >
+            <Navbar />
+          </Suspense>
+          <main className="p-8">{children}</main>
+        </Providers>
       </body>
     </html>
   );

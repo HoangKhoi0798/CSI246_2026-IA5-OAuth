@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { auth, signIn, signOut } from "@/auth";
-import { connection } from "next/server";
 
 export const dynamic = "force-dynamic";
 
 export default async function Navbar() {
-  await connection();
   const session = await auth();
 
   return (
@@ -14,10 +12,10 @@ export default async function Navbar() {
         <Link href="/" className="hover:underline">
           Home
         </Link>
-        <Link href="/client-page" className="hover:underline">
+        <Link href="/client" className="hover:underline">
           Client Protected
         </Link>
-        <Link href="/server-page" className="hover:underline">
+        <Link href="/server" className="hover:underline">
           Server Protected
         </Link>
       </div>
