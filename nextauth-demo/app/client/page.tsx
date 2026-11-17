@@ -11,8 +11,9 @@ export default function ClientPage() {
       <div className="p-8">
         <h1 className="text-2xl font-bold">Protected Client Page</h1>
         <p className="text-red-500 mt-2">
-          You must be logged in to view this page. Please sign in using the
-          Navbar above.
+          You are required to log in to view the content of this page. <br />
+          Select your preferred sign in method from the upper right of the
+          navigation bar.
         </p>
       </div>
     );
@@ -22,7 +23,8 @@ export default function ClientPage() {
     <div className="p-8">
       <h1 className="text-2xl font-bold">Protected Client Page</h1>
       <p className="mt-2">
-        Welcome to the client side, <strong>{session?.user?.email}</strong>!
+        This is the protected client page. User currently using:{" "}
+        <strong>{session?.user?.email}</strong>!
       </p>
     </div>
   );

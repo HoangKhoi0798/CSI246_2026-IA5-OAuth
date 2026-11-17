@@ -15,7 +15,7 @@ async function ServerContent() {
     <div>
       <h1 className="text-2xl font-bold">Protected Server Page</h1>
       <p className="mt-2">
-        This page was rendered securely on the server for:{" "}
+        This is the protected server page. User currently using:{" "}
         <strong>{session.user?.name || session.user?.email}</strong>
       </p>
     </div>

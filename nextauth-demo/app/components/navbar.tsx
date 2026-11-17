@@ -13,16 +13,16 @@ export default async function Navbar() {
           Home
         </Link>
         <Link href="/client" className="hover:underline">
-          Client Protected
+          Client Page
         </Link>
         <Link href="/server" className="hover:underline">
-          Server Protected
+          Server Page
         </Link>
       </div>
       <div>
         {session?.user ? (
           <div className="flex items-center gap-4">
-            <span>Hello, {session.user.name || session.user.email}</span>
+            <span>In use: {session.user.name || session.user.email}</span>
             <form
               action={async () => {
                 "use server";
@@ -43,7 +43,7 @@ export default async function Navbar() {
               }}
             >
               <button type="submit" className="bg-gray-700 px-3 py-1 rounded">
-                Sign in with GitHub
+                GitHub
               </button>
             </form>
             <form
@@ -53,7 +53,7 @@ export default async function Navbar() {
               }}
             >
               <button type="submit" className="bg-indigo-600 px-3 py-1 rounded">
-                Sign in with Discord
+                Discord
               </button>
             </form>
           </div>

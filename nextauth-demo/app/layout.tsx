@@ -20,7 +20,7 @@ export default function RootLayout({
           <Suspense
             fallback={
               <div className="p-4 bg-gray-900 text-white">
-                Loading navbar...
+                Loading navigation bar...
               </div>
             }
           >
